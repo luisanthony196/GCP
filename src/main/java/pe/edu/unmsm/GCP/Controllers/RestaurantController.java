@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import pe.edu.unmsm.GCP.service.RestaurantService;
 import pe.edu.unmsm.GCP.utils.Restaurant;
+import pe.edu.unmsm.GCP.utils.RestaurantV1;
+import pe.edu.unmsm.GCP.utils.RestaurantV2;
 
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
@@ -16,8 +18,15 @@ public class RestaurantController {
     RestaurantService rs;
 
     @PostMapping("/caso1")
-    public String caso1(@RequestBody String barrio) {
-        return "hello";
+    public List<RestaurantV2> caso1(@RequestBody HashMap<String, Object> params) {
+        rs.llenarDatos();
+        return rs.caso1(params);
+    }
+
+    @PostMapping("/caso2")
+    public RestaurantV1 caso2(@RequestBody HashMap<String, Object> params) {
+        rs.llenarDatos();
+        return rs.caso2(params);
     }
 
     @GetMapping("/barrios")
