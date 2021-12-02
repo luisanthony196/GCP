@@ -1,5 +1,7 @@
 package pe.edu.unmsm.GCP.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +23,8 @@ public class RestaurantController {
     }
 
     @PostMapping("/caso3")
-    public String caso3(@RequestBody String barrio) {
+    public List<String> caso3(@RequestBody String barrio) {
         rs.llenarDatos();
-        return "hello";
+        return rs.caso3(barrio);
     }
 }
