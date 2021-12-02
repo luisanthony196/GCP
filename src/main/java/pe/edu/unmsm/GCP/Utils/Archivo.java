@@ -1,4 +1,4 @@
-package pe.edu.unmsm.GCP.Utils;
+package pe.edu.unmsm.GCP.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

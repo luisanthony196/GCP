@@ -1,24 +1,28 @@
 package pe.edu.unmsm.GCP.controllers;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import pe.edu.unmsm.GCP.service.RestaurantService;
 
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class RestaurantController {
+    @Autowired 
+    RestaurantService rs;
 
     @PostMapping("/caso1")
     public String caso1(@RequestBody String barrio) {
+        return "hello";
+    }
+
+    @PostMapping("/caso3")
+    public String caso3(@RequestBody String barrio) {
+        rs.llenarDatos();
         return "hello";
     }
 }

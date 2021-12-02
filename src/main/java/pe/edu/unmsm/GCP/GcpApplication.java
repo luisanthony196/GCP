@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 import io.reactivex.Observable;
-import pe.edu.unmsm.GCP.Utils.Archivo;
+import pe.edu.unmsm.GCP.utils.Archivo;
 
 @SpringBootApplication
 public class GcpApplication {
