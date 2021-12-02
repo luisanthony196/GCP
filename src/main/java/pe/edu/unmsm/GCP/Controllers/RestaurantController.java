@@ -1,13 +1,10 @@
 package pe.edu.unmsm.GCP.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pe.edu.unmsm.GCP.service.RestaurantService;
 
@@ -22,9 +19,15 @@ public class RestaurantController {
         return "hello";
     }
 
-    @PostMapping("/caso3")
-    public List<String> caso3(@RequestBody String barrio) {
+    @GetMapping("/barrios")
+    public List<String> barrios() {
         rs.llenarDatos();
-        return rs.caso3(barrio);
+        return rs.getBarrios();
+    }
+
+    @PostMapping("/numrest")
+    public List<Integer> numrest(@RequestBody HashMap<String, Object> params) {
+        rs.llenarDatos();
+        return rs.getNumRestaurantes(params);
     }
 }
