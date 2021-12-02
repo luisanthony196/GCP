@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import io.reactivex.Observable;
 import pe.edu.unmsm.GCP.utils.Archivo;
+import pe.edu.unmsm.GCP.utils.Restaurant;
 
 @Service
 public class RestaurantService {
@@ -39,6 +40,24 @@ public class RestaurantService {
                 .count()
                 // .reduce((total, next) -> total + next)
                 .subscribe(s -> al.add(Integer.parseInt(s + "")));
+        return al;
+    }
+
+    public List<Restaurant> caso4(HashMap<String, Object> params, int page) {
+        int skip = (int) Math.pow(5, page - 1);
+        if (skip == 1)
+            skip = 0;
+        ArrayList<Restaurant> al = new ArrayList<>();
+        Observable.fromIterable(lineas)
+                .flatMap(word -> Observable.fromArray(word))
+                .filter(i -> i.getString("borough").equals(params.get("barrio")))
+                .filter(i -> i.getString("cuisine").equals(params.get("cocina")))
+                .skip(skip)
+                .take(5)
+                .subscribe(s -> {
+                    JSONObject t = s.getJSONObject("address");
+                    al.add(new Restaurant(t.getString("building"), t.get("coord").toString(), t.getString("street"), t.getString("zipcode"), s.getString("name")));
+                });
         return al;
     }
 }
