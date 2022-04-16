@@ -1,15 +1,15 @@
 package pe.edu.unmsm.GCP.utils;
 
 public class RestaurantV2 {
-    public String name;
-    public String borough;
-    public String cuisine;
+  public String name;
+  public String borough;
+  public String cuisine;
 
-    public RestaurantV2(String name, String borough, String cuisine) {
-        this.name = name;
-        this.borough = borough;
-        this.cuisine = cuisine;
-    }
+  public RestaurantV2(String name, String borough, String cuisine) {
+    this.name = name;
+    this.borough = borough;
+    this.cuisine = cuisine;
+  }
 
   public String getName() {
     return this.name;
