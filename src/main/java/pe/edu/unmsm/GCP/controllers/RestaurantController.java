@@ -11,7 +11,6 @@ import pe.edu.unmsm.GCP.utils.Restaurant;
 import pe.edu.unmsm.GCP.utils.RestaurantV1;
 import pe.edu.unmsm.GCP.utils.RestaurantV2;
 
-@RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class RestaurantController {
 	@Autowired
